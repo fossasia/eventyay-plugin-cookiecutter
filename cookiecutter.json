@@ -1,0 +1,10 @@
+{
+	"repo_name": "pretix-superplugin",
+	"repo_url": "GitHub repository URL",
+	"module_name": "pretix_superplugin",
+	"human_name": "The pretix super plugin",
+	"author_name": "Your name",
+	"author_email": "Your email",
+	"year": "Current year",
+	"short_description": "Short description"
+}

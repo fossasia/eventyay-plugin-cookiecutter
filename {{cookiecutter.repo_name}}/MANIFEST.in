@@ -1,0 +1,3 @@
+recursive-include {{cookiecutter.module_name}}/static *
+recursive-include {{cookiecutter.module_name}}/templates *
+recursive-include {{cookiecutter.module_name}}/locale *
