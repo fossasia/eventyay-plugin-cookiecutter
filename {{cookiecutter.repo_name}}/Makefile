@@ -7,3 +7,4 @@ localecompile:
 localegen:
 	django-admin makemessages -i build -i dist -i "*egg*" $(LNGS)
 
+.PHONY: all localecompile localegen
