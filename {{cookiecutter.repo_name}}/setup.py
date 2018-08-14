@@ -14,7 +14,7 @@ except:
 
 class CustomBuild(build):
     def run(self):
-        management.call_command('compilemessages', verbosity=1, interactive=False)
+        management.call_command('compilemessages', verbosity=1)
         build.run(self)
 
 
