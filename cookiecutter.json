@@ -6,5 +6,6 @@
 	"author_name": "Your name",
 	"author_email": "Your email",
 	"year": "Current year",
-	"short_description": "Short description"
+	"short_description": "Short description",
+	"license": ["Apache", "pretix Enterprise"]
 }
