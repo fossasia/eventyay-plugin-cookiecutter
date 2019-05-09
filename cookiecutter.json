@@ -7,5 +7,6 @@
 	"author_email": "Your email",
 	"year": "Current year",
 	"short_description": "Short description",
-	"license": ["Apache", "pretix Enterprise"]
+	"license": ["Apache", "pretix Enterprise"],
+	"min_basever": "2.7.0"
 }

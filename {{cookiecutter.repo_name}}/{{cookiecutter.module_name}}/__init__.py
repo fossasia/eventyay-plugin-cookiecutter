@@ -1,8 +1,11 @@
-from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy
+try:
+    from pretix.base.plugins import PluginConfig
+except ImportError:
+    raise RuntimeError("Please use pretix 2.7 or above to run this plugin!")
 
 
-class PluginApp(AppConfig):
+class PluginApp(PluginConfig):
     name = '{{cookiecutter.module_name}}'
     verbose_name = '{{cookiecutter.human_name}}'
 
@@ -12,6 +15,7 @@ class PluginApp(AppConfig):
         description = ugettext_lazy('{{cookiecutter.short_description}}')
         visible = True
         version = '1.0.0'
+        compatibility = "pretix>={{cookiecutter.min_basever}}"
 
     def ready(self):
         from . import signals  # NOQA
