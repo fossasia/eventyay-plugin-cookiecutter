@@ -4,6 +4,8 @@ from distutils.command.build import build
 from django.core import management
 from setuptools import setup, find_packages
 
+from {{cookiecutter.module_name}} import __version__
+
 
 try:
     with open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8') as f:
@@ -25,7 +27,7 @@ cmdclass = {
 
 setup(
     name='{{cookiecutter.repo_name}}',
-    version='1.0.0',
+    version=__version__,
     description='{{cookiecutter.short_description}}',
     long_description=long_description,
     url='{{cookiecutter.repo_url}}',

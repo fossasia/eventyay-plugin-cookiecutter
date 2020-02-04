@@ -4,6 +4,8 @@ try:
 except ImportError:
     raise RuntimeError("Please use pretix 2.7 or above to run this plugin!")
 
+__version__ = '1.0.0'
+
 
 class PluginApp(PluginConfig):
     name = '{{cookiecutter.module_name}}'
@@ -14,7 +16,7 @@ class PluginApp(PluginConfig):
         author = '{{cookiecutter.author_name}}'
         description = ugettext_lazy('{{cookiecutter.short_description}}')
         visible = True
-        version = '1.0.0'
+        version = __version__
         compatibility = "pretix>={{cookiecutter.min_basever}}"
 
     def ready(self):
