@@ -1,4 +1,4 @@
-from django.utils.translation import ugettext_lazy
+from django.utils.translation import gettext_lazy
 try:
     from pretix.base.plugins import PluginConfig
 except ImportError:
@@ -12,9 +12,9 @@ class PluginApp(PluginConfig):
     verbose_name = '{{cookiecutter.human_name}}'
 
     class PretixPluginMeta:
-        name = ugettext_lazy('{{cookiecutter.human_name}}')
+        name = gettext_lazy('{{cookiecutter.human_name}}')
         author = '{{cookiecutter.author_name}}'
-        description = ugettext_lazy('{{cookiecutter.short_description}}')
+        description = gettext_lazy('{{cookiecutter.short_description}}')
         visible = True
         version = __version__
         compatibility = "pretix>={{cookiecutter.min_basever}}"
