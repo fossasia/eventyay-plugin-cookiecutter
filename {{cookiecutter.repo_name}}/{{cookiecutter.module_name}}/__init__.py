@@ -1,4 +1,5 @@
 from django.utils.translation import gettext_lazy
+
 try:
     from pretix.base.plugins import PluginConfig
 except ImportError:
@@ -17,6 +18,7 @@ class PluginApp(PluginConfig):
         description = gettext_lazy('{{cookiecutter.short_description}}')
         visible = True
         version = __version__
+        category = '{{cookiecutter.category}}'
         compatibility = "pretix>={{cookiecutter.min_basever}}"
 
     def ready(self):

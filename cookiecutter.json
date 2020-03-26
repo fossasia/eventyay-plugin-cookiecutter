@@ -8,5 +8,6 @@
 	"year": "Current year",
 	"short_description": "Short description",
 	"license": ["Apache", "pretix Enterprise"],
-	"min_basever": "2.7.0"
+	"min_basever": "2.7.0",
+	"category": ["FEATURE", "PAYMENT", "INTEGRATION", "CUSTOMIZATION", "FORMAT", "API"]
 }
