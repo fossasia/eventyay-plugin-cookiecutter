@@ -33,7 +33,7 @@ setup(
     url='{{cookiecutter.repo_url}}',
     author='{{cookiecutter.author_name}}',
     author_email='{{cookiecutter.author_email}}',
-    license='Apache Software License',
+    license='{{cookiecutter.license}}',
 
     install_requires=[],
     packages=find_packages(exclude=['tests', 'tests.*']),
