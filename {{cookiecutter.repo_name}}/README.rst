@@ -3,6 +3,8 @@
 
 This is a plugin for `pretix`_. 
 
+{{ cookiecutter.short_description }}
+
 Development setup
 -----------------
 
