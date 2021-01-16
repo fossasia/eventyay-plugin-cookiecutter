@@ -7,6 +7,8 @@ then
     echo "Could not find your virtual environment"
 fi
 
+echo "#!/bin/sh" >> $GIT_DIR/hooks/pre-commit
+echo "set -e" >> $GIT_DIR/hooks/pre-commit
 echo "source $VENV_ACTIVATE" >> $GIT_DIR/hooks/pre-commit
 echo "docformatter --check -r ." >> $GIT_DIR/hooks/pre-commit
 echo "black --check ." >> $GIT_DIR/hooks/pre-commit

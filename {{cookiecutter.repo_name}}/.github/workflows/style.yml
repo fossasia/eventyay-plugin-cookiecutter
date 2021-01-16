@@ -2,12 +2,12 @@ name: Code Style
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
     paths-ignore:
       - '{{cookiecutter.module_name}}/locale/**'
       - '{{cookiecutter.module_name}}/static/**'
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
     paths-ignore:
       - '{{cookiecutter.module_name}}/locale/**'
       - '{{cookiecutter.module_name}}/static/**'
@@ -25,9 +25,9 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+          key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            {{ "${{ runner.os }}-pip-" }}
       - name: Install pretix
         run: pip3 install pretix
       - name: Install Dependencies
@@ -46,9 +46,9 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+          key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            {{ "${{ runner.os }}-pip-" }}
       - name: Install pretix
         run: pip3 install pretix
       - name: Install Dependencies
@@ -68,9 +68,9 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+          key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            {{ "${{ runner.os }}-pip-" }}
       - name: Install pretix
         run: pip3 install pretix
       - name: Install Dependencies
@@ -90,9 +90,9 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+          key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            {{ "${{ runner.os }}-pip-" }}
       - name: Install pretix
         run: pip3 install pretix
       - name: Install Dependencies
@@ -112,9 +112,9 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}
+          key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            {{ "${{ runner.os }}-pip-" }}
       - name: Install pretix
         run: pip3 install pretix
       - name: Install Dependencies
