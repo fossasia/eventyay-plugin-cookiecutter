@@ -10,7 +10,7 @@ from {{cookiecutter.module_name}} import __version__
 try:
     with open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8') as f:
         long_description = f.read()
-except:
+except Exception:
     long_description = ''
 
 
