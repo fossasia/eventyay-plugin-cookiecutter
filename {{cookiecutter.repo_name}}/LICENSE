@@ -15,8 +15,7 @@ limitations under the License.
 {% elif cookiecutter.license == "pretix Enterprise" %}
 This repository contains proprietary software owned by
 
-Raphael Michel
-rami.io Software development
+rami.io GmbH
 
 You can obtain a paid license and the full license text at sales@pretix.eu.
 
