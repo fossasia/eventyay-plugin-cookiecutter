@@ -21,18 +21,18 @@ Development setup
 6. Restart your local pretix server. You can now use the plugin from this repository for your events by enabling it in
    the 'plugins' tab in the settings.
 
-This plugin has CI set up to enforce a few code style rules. To check locally, you need these packages installed:
+This plugin has CI set up to enforce a few code style rules. To check locally, you need these packages installed::
 
     pip install flake8 isort black docformatter
 
-To check your plugin for rule violations, run:
+To check your plugin for rule violations, run::
 
     docformatter --check -r .
     black --check .
     isort -c .
     flake8 .
 
-You can auto-fix some of these issues by running:
+You can auto-fix some of these issues by running::
 
     docformatter -r .
     isort .
