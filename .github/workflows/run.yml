@@ -1,0 +1,57 @@
+name: Try result
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint:
+    name: lint and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install system dependencies
+        run: sudo apt update && sudo apt install gettext
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install cookiecutter
+        run: pip3 install cookiecutter
+      - name: Run cookiecutter
+        run: cookiecutter . --no-input
+      - name: Init git repo (required for check-manifest)
+        run: git config --global user.email "you@example.com" && git config --global user.name "Your Name" && git init && git add . && git commit -m 'Initial commit'
+        working-directory: pretix-superplugin
+      - name: Install pretix
+        run: pip3 install pretix
+        working-directory: pretix-superplugin
+      - name: Install Dependencies
+        run: pip3 install isort flake8 black docformatter twine check-manifest pytest pytest-django -Ue .
+        working-directory: pretix-superplugin
+      - name: Run isort
+        run: isort -c .
+        working-directory: pretix-superplugin
+      - name: Run flake8
+        run: flake8 .
+        working-directory: pretix-superplugin
+      - name: Run black
+        run: black --check .
+        working-directory: pretix-superplugin
+      - name: Run docformatter
+        run: docformatter --check -r .
+        working-directory: pretix-superplugin
+      - name: Run check-manifest
+        run: check-manifest .
+        working-directory: pretix-superplugin
+      - name: Build package
+        run: python setup.py sdist
+        working-directory: pretix-superplugin
+      - name: Check package
+        run: twine check dist/*
+        working-directory: pretix-superplugin
+      - name: Run tests
+        run: py.test tests
+        working-directory: pretix-superplugin
