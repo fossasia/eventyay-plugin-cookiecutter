@@ -8,6 +8,7 @@ except ImportError:
 
 
 class PluginApp(PluginConfig):
+    default = True
     name = "{{cookiecutter.module_name}}"
     verbose_name = "{{cookiecutter.human_name}}"
 
