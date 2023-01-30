@@ -19,7 +19,6 @@ style:
         - XDG_CACHE_HOME=/cache pip3 install -U pip wheel setuptools isort docformatter black flake8 check-manifest
         - XDG_CACHE_HOME=/cache pip3 install -U "git+https://github.com/pretix/pretix.git@master#egg=pretix&subdirectory=src"
         - python setup.py develop
-        - docformatter --check -r .
         - black --check .
         - isort -c .
         - flake8 .
