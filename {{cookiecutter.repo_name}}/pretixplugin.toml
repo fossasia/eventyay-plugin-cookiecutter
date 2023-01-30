@@ -1,0 +1,5 @@
+[plugin]
+package = "{{cookiecutter.repo_name}}"
+modules = [ "{{cookiecutter.module_name}}" ]
+marketplace_name = "{{cookiecutter.repo_name|replace('pretix-', '')}}"
+
