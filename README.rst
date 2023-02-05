@@ -25,6 +25,20 @@ project folder created for you::
     author_email [Your email]: jrandom@example.org
     year [Current year]: 2017
     short_description [Short description]: The best plugin
+    Select license:
+    1 - Apache
+    2 - pretix Enterprise
+    Choose from 1, 2 [1]: 1
+    min_basever [2.7.0]: 2.7.0
+    Select category:
+    1 - FEATURE
+    2 - PAYMENT
+    3 - INTEGRATION
+    4 - CUSTOMIZATION
+    5 - FORMAT
+    6 - API
+    Choose from 1, 2, 3, 4, 5, 6 [1]: 1
+
 
 Now, change to the newly created directory::
 
