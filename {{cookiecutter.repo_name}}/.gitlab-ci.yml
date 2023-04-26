@@ -4,7 +4,7 @@ test:
         - virtualenv /tmp/env
         - source /tmp/env/bin/activate
         - XDG_CACHE_HOME=/cache pip3 install -U pip wheel setuptools pytest pytest-django coverage
-        - XDG_CACHE_HOME=/cache pip3 install -U "git+https://github.com/pretix/pretix.git@master#egg=pretix&subdirectory=src"
+        - XDG_CACHE_HOME=/cache pip3 install -U "git+https://github.com/pretix/pretix.git@master#egg=pretix"
         - python setup.py develop
         - make
         - coverage run -m pytest tests
@@ -17,7 +17,7 @@ style:
         - virtualenv /tmp/env
         - source /tmp/env/bin/activate
         - XDG_CACHE_HOME=/cache pip3 install -U pip wheel setuptools isort black flake8 check-manifest
-        - XDG_CACHE_HOME=/cache pip3 install -U "git+https://github.com/pretix/pretix.git@master#egg=pretix&subdirectory=src"
+        - XDG_CACHE_HOME=/cache pip3 install -U "git+https://github.com/pretix/pretix.git@master#egg=pretix"
         - python setup.py develop
         - black --check .
         - isort -c .
