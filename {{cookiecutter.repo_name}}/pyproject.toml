@@ -1,0 +1,42 @@
+[project]
+name = "{{cookiecutter.repo_name}}"
+dynamic = ["version"]
+description = "{{cookiecutter.short_description}}"
+readme = "README.rst"
+license = {text = "{{cookiecutter.license}}"}
+keywords = ["pretix"]
+authors = [
+    {name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"},
+]
+maintainers = [
+    {name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"},
+]
+
+dependencies = [
+]
+
+[project.entry-points."pretix.plugin"]
+{{cookiecutter.module_name}} = "{{cookiecutter.module_name}}:PretixPluginMeta"
+
+[project.entry-points."distutils.commands"]
+build = "pretix_plugin_build.build:CustomBuild"
+
+[build-system]
+requires = [
+    "setuptools",
+    "pretix-plugin-build",
+]
+
+[project.urls]
+homepage = "{{cookiecutter.repo_url}}"
+repository = "{{cookiecutter.repo_url}}"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "{{cookiecutter.module_name}}.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["pretix*"]
+namespaces = false
