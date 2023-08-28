@@ -4,7 +4,7 @@
 	"module_name": "pretix_superplugin",
 	"human_name": "Superplugin",
 	"author_name": "Your name",
-	"author_email": "Your email",
+	"author_email": "your-email@example.org",
 	"year": "Current year",
 	"short_description": "Short description",
 	"license": ["Apache", "pretix Enterprise"],
