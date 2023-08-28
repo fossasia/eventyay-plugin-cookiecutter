@@ -96,7 +96,7 @@ jobs:
       - name: Install pretix
         run: pip3 install pretix
       - name: Install Dependencies
-        run: pip3 install twine check-manifest -Ue .
+        run: pip3 install twine check-manifest pretix-plugin-build setuptools build -Ue .
       - name: Run check-manifest
         run: check-manifest .
         working-directory: .
