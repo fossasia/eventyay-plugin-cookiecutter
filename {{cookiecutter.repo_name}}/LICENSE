@@ -1,5 +1,5 @@
 {% if cookiecutter.license == "Apache" %}
-Copyright {{cookiecutter.year}} {{cookiecutter.author_name}}
+Copyright {% now 'utc', '%Y' %} {{cookiecutter.author_name}}
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

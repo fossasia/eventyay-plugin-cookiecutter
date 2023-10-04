@@ -23,7 +23,6 @@ project folder created for you::
     human_name [The pretix super plugin]: Super Plugin
     author_name [Your name]: J Random Developer
     author_email [Your email]: jrandom@example.org
-    year [Current year]: 2017
     short_description [Short description]: The best plugin
     Select license:
     1 - Apache

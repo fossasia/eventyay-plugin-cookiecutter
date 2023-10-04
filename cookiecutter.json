@@ -5,7 +5,6 @@
 	"human_name": "Superplugin",
 	"author_name": "Your name",
 	"author_email": "your-email@example.org",
-	"year": "Current year",
 	"short_description": "Short description",
 	"license": ["Apache", "pretix Enterprise"],
 	"min_basever": "2.7.0",

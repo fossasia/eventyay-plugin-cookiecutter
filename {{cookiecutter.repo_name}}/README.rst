@@ -43,11 +43,11 @@ License
 -------
 
 {% if cookiecutter.license == "Apache" %}
-Copyright {{cookiecutter.year}} {{cookiecutter.author_name}}
+Copyright {% now 'utc', '%Y' %} {{cookiecutter.author_name}}
 
 Released under the terms of the Apache License 2.0
 {% elif cookiecutter.license == "pretix Enterprise" %}
-Copyright {{cookiecutter.year}} Raphael Michel
+Copyright {% now 'utc', '%Y' %} Raphael Michel
 
 Released under the terms of the proprietary pretix Enterprise license.
 {% endif %}
