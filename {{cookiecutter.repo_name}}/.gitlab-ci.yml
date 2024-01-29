@@ -30,7 +30,7 @@ pypi:
         - cp /keys/.pypirc ~/.pypirc
         - virtualenv /tmp/env
         - source /tmp/env/bin/activate
-        - XDG_CACHE_HOME=/cache pip3 install -U pip wheel setuptools twine check-manifest build
+        - XDG_CACHE_HOME=/cache pip3 install -U pip wheel setuptools twine build pretix-plugin-build check-manifest
         - python -m build
         - check-manifest .
         - twine check dist/*
