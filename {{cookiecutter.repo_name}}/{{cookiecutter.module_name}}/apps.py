@@ -21,6 +21,8 @@ class PluginApp(PluginConfig):
         version = __version__
         category = "{{cookiecutter.category}}"
         compatibility = "pretix>={{cookiecutter.min_basever}}"
+        settings_links = []
+        navigation_links = []
 
     def ready(self):
         from . import signals  # NOQA
