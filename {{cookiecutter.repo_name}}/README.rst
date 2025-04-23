@@ -47,7 +47,7 @@ Copyright {% now 'utc', '%Y' %} {{cookiecutter.author_name}}
 
 Released under the terms of the Apache License 2.0
 {% elif cookiecutter.license == "pretix Enterprise" %}
-Copyright {% now 'utc', '%Y' %} Raphael Michel
+Copyright {% now 'utc', '%Y' %} rami.io GmbH
 
 Released under the terms of the proprietary pretix Enterprise license.
 {% endif %}
