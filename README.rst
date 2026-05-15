@@ -11,7 +11,7 @@ First, create a virtual environment and install the ``cookiecutter``
 package using pip. Next, use it to bootstrap your project folder::
 
     $ cd <your-project-folder-parent>
-    $ cookiecutter https://github.com/eventyay/eventyay-plugin-cookiecutter
+    $ cookiecutter https://github.com/fossasia/eventyay-plugin-cookiecutter
 
 
 You'll be prompted for some questions. Answer them, and you will find a
