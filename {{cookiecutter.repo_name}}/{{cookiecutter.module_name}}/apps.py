@@ -8,12 +8,12 @@ except ImportError:
     raise RuntimeError("Please use a later version of eventyay-tickets")
 
 
-class PluginApp(PluginConfig):
+class {{cookiecutter.human_name}}App(PluginConfig):
     default = True
     name = "{{cookiecutter.module_name}}"
     verbose_name = _("{{cookiecutter.human_name}}")
 
-    class PretixPluginMeta:
+    class EventyayPluginMeta:
         name = _("{{cookiecutter.human_name}}")
         author = "{{cookiecutter.author_name}}"
         description = _("{{cookiecutter.short_description}}")
