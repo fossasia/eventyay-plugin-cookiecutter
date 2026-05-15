@@ -1,12 +1,11 @@
 {
-	"repo_name": "pretix-superplugin",
+	"repo_name": "eventyay-superplugin",
 	"repo_url": "GitHub repository URL",
-	"module_name": "pretix_superplugin",
+	"module_name": "eventyay_superplugin",
 	"human_name": "Superplugin",
 	"author_name": "Your name",
 	"author_email": "your-email@example.org",
 	"short_description": "Short description",
-	"license": ["Apache", "pretix Enterprise"],
 	"min_basever": "2.7.0",
 	"category": ["FEATURE", "PAYMENT", "INTEGRATION", "CUSTOMIZATION", "FORMAT", "API"]
 }

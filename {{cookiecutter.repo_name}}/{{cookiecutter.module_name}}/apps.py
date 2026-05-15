@@ -1,28 +1,25 @@
-from django.utils.translation import gettext_lazy
+from django.utils.translation import gettext_lazy as _
 
 from . import __version__
 
 try:
-    from pretix.base.plugins import PluginConfig
+    from eventyay.base.plugins import PluginConfig
 except ImportError:
-    raise RuntimeError("Please use pretix 2.7 or above to run this plugin!")
+    raise RuntimeError("Please use a later version of eventyay-tickets")
 
 
 class PluginApp(PluginConfig):
     default = True
     name = "{{cookiecutter.module_name}}"
-    verbose_name = "{{cookiecutter.human_name}}"
+    verbose_name = _("{{cookiecutter.human_name}}")
 
     class PretixPluginMeta:
-        name = gettext_lazy("{{cookiecutter.human_name}}")
+        name = _("{{cookiecutter.human_name}}")
         author = "{{cookiecutter.author_name}}"
-        description = gettext_lazy("{{cookiecutter.short_description}}")
+        description = _("{{cookiecutter.short_description}}")
         visible = True
         version = __version__
         category = "{{cookiecutter.category}}"
-        compatibility = "pretix>={{cookiecutter.min_basever}}"
-        settings_links = []
-        navigation_links = []
 
     def ready(self):
         from . import signals  # NOQA

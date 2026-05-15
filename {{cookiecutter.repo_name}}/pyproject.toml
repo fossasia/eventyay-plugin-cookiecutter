@@ -3,8 +3,8 @@ name = "{{cookiecutter.repo_name}}"
 dynamic = ["version"]
 description = "{{cookiecutter.short_description}}"
 readme = "README.rst"
-license = {text = "{{cookiecutter.license}}"}
-keywords = ["pretix"]
+license = {file = "LICENSE"}
+keywords = ["Eventyay"]
 authors = [
     {name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"},
 ]
@@ -38,5 +38,5 @@ include-package-data = true
 version = {attr = "{{cookiecutter.module_name}}.__version__"}
 
 [tool.setuptools.packages.find]
-include = ["pretix*"]
+include = ["{{cookiecutter.module_name}}*"]
 namespaces = false

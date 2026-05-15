@@ -1,33 +1,29 @@
-pretix-plugin-cookiecutter
+eventyay-plugin-cookiecutter
 ==========================
 
-A simple `cookiecutter`_ template to bootstrap a `pretix`_ plugin.
+A simple `cookiecutter`_ template to bootstrap a `eventyay`_ plugin.
 
 Usage
 -----
 
-Let's pretend you want to create a pretix plugin called "superplugin".
+Let's pretend you want to create a eventyay plugin called "superplugin".
 First, create a virtual environment and install the ``cookiecutter``
 package using pip. Next, use it to bootstrap your project folder::
 
     $ cd <your-project-folder-parent>
-    $ cookiecutter https://github.com/pretix/pretix-plugin-cookiecutter
+    $ cookiecutter https://github.com/eventyay/eventyay-plugin-cookiecutter
 
 
 You'll be prompted for some questions. Answer them, and you will find a
 project folder created for you::
 
-    repo_name [pretix-superplugin]: pretix-superplugin
-    repo_url [GitHub repository URL]: https://github.com/myuser/pretix-superplugin
-    module_name [pretix_superplugin]: pretix_superplugin
-    human_name [The pretix super plugin]: Super Plugin
+    repo_name [eventyay-superplugin]: eventyay-superplugin
+    repo_url [GitHub repository URL]: https://github.com/myuser/eventyay-superplugin
+    module_name [eventyay_superplugin]: eventyay_superplugin
+    human_name [The eventyay super plugin]: Super Plugin
     author_name [Your name]: J Random Developer
     author_email [Your email]: jrandom@example.org
     short_description [Short description]: The best plugin
-    Select license:
-    1 - Apache
-    2 - pretix Enterprise
-    Choose from 1, 2 [1]: 1
     min_basever [2.7.0]: 2.7.0
     Select category:
     1 - FEATURE
@@ -41,10 +37,10 @@ project folder created for you::
 
 Now, change to the newly created directory::
 
-    $ cd pretix-superplugin
+    $ cd eventyay-superplugin
 
-Voilà, there's your plugin structure! See pretix' `documentation`_ for more info.
+Voilà, there's your plugin structure! See eventyay' `documentation`_ for more info.
 
-.. _pretix: https://github.com/pretix/pretix
+.. _eventyay: https://github.com/eventyay/eventyay
 .. _cookiecutter: https://github.com/audreyr/cookiecutter
-.. _documentation: https://docs.pretix.eu/en/latest/development/api/plugins.html#pluginsetup
+.. _documentation: https://docs.eventyay.eu/en/latest/development/api/plugins.html#pluginsetup
