@@ -1,14 +1,10 @@
 from django.utils.translation import gettext_lazy as _
+from eventyay.base.plugins import PluginConfig
 
 from . import __version__
 
-try:
-    from eventyay.base.plugins import PluginConfig
-except ImportError:
-    raise RuntimeError("Please use a later version of eventyay-tickets")
 
-
-class {{cookiecutter.human_name}}App(PluginConfig):
+class PluginApp(PluginConfig):
     default = True
     name = "{{cookiecutter.module_name}}"
     verbose_name = _("{{cookiecutter.human_name}}")

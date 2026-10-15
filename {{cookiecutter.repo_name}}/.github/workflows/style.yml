@@ -17,42 +17,38 @@ jobs:
     name: isort
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v1
+      - uses: actions/checkout@v7
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.11
+          python-version: "3.12"
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
             {{ "${{ runner.os }}-pip-" }}
-      - name: Install pretix
-        run: pip3 install pretix
       - name: Install Dependencies
-        run: pip3 install isort -Ue .
+        run: pip3 install isort
       - name: Run isort
         run: isort -c .
   flake:
     name: flake8
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v1
+      - uses: actions/checkout@v7
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.11
+          python-version: "3.12"
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
             {{ "${{ runner.os }}-pip-" }}
-      - name: Install pretix
-        run: pip3 install pretix
       - name: Install Dependencies
-        run: pip3 install flake8 -Ue .
+        run: pip3 install flake8
       - name: Run flake8
         run: flake8 .
         working-directory: .
@@ -60,21 +56,19 @@ jobs:
     name: black
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v1
+      - uses: actions/checkout@v7
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.11
+          python-version: "3.12"
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
             {{ "${{ runner.os }}-pip-" }}
-      - name: Install pretix
-        run: pip3 install pretix
       - name: Install Dependencies
-        run: pip3 install black -Ue .
+        run: pip3 install black
       - name: Run black
         run: black --check .
         working-directory: .
@@ -82,21 +76,19 @@ jobs:
     name: packaging
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v1
+      - uses: actions/checkout@v7
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.11
+          python-version: "3.12"
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
           restore-keys: |
             {{ "${{ runner.os }}-pip-" }}
-      - name: Install pretix
-        run: pip3 install pretix
       - name: Install Dependencies
-        run: pip3 install twine check-manifest pretix-plugin-build setuptools build -Ue .
+        run: pip3 install twine check-manifest pretix-plugin-build setuptools build
       - name: Run check-manifest
         run: check-manifest .
         working-directory: .

@@ -8,7 +8,9 @@ This is a plugin for `eventyay`_.
 Development setup
 -----------------
 
-1. Make sure that you have a working `eventyay development setup`_.
+1. Make sure that you have a working unified `eventyay development setup`_ with Python 3.12.
+   Install Eventyay from the ``app`` directory of its source repository; the legacy
+   ``pretix`` and ``eventyay-tickets`` packages do not provide this runtime.
 
 2. Clone this repository.
 
@@ -38,6 +40,11 @@ You can auto-fix some of these issues by running::
 
 To automatically check for these issues before you commit, you can run ``.install-hooks``.
 
+
+To run the plugin discovery tests in the same environment::
+
+    uv pip install pytest pytest-django
+    EVY_RUNNING_ENVIRONMENT=testing python -m pytest tests
 
 License
 -------

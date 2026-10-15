@@ -2,53 +2,60 @@ name: Try result
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
-  lint:
-    name: lint and test
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - module: superplugin
+            human_name: Superplugin
+          - module: custom_plugin
+            human_name: Custom Plugin
     steps:
-      - name: Install system dependencies
-        run: sudo apt update && sudo apt install gettext
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v1
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
-          python-version: 3.11
-      - name: Install cookiecutter
-        run: pip3 install cookiecutter
-      - name: Run cookiecutter
-        run: cookiecutter . --no-input
-      - name: Init git repo (required for check-manifest)
-        run: git config --global user.email "you@example.com" && git config --global user.name "Your Name" && git init && git add . && git commit -m 'Initial commit'
-        working-directory: pretix-superplugin
-      - name: Install pretix
-        run: pip3 install pretix
-        working-directory: pretix-superplugin
-      - name: Install Dependencies
-        run: pip3 install isort flake8 black docformatter twine check-manifest pytest pytest-django -Ue .
-        working-directory: pretix-superplugin
-      - name: Run isort
-        run: isort -c .
-        working-directory: pretix-superplugin
-      - name: Run flake8
-        run: flake8 .
-        working-directory: pretix-superplugin
-      - name: Run black
-        run: black --check .
-        working-directory: pretix-superplugin
-      - name: Run check-manifest
-        run: check-manifest .
-        working-directory: pretix-superplugin
-      - name: Build package
-        run: python setup.py sdist
-        working-directory: pretix-superplugin
-      - name: Check package
-        run: twine check dist/*
-        working-directory: pretix-superplugin
-      - name: Run tests
-        run: py.test tests
-        working-directory: pretix-superplugin
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y gettext libjpeg-dev zlib1g-dev libpq-dev
+      - name: Check workflow paths
+        run: uv tool run --from cookiecutter --with pyyaml python -m unittest discover -s tests -v
+      - name: Generate plugin
+        run: |
+          uv tool run --from cookiecutter cookiecutter . --no-input module_name=${{ matrix.module }} human_name="${{ matrix.human_name }}"
+      - name: Check generated plugin style and package
+        working-directory: eventyay-superplugin
+        run: |
+          git init
+          git config user.email "test@example.com"
+          git config user.name "Template tests"
+          git add .
+          git commit -m 'Generate plugin'
+          uv venv ../.template-checks
+          uv pip install --python ../.template-checks/bin/python black isort flake8 check-manifest build twine pretix-plugin-build
+          ../.template-checks/bin/black --check .
+          ../.template-checks/bin/isort --check-only .
+          ../.template-checks/bin/flake8 .
+          ../.template-checks/bin/check-manifest .
+          ../.template-checks/bin/python -m build
+          ../.template-checks/bin/twine check dist/*
+      - name: Clone unified Eventyay
+        run: git clone --depth 1 https://github.com/fossasia/eventyay.git ../eventyay
+      - name: Install Eventyay and the generated plugin
+        working-directory: ../eventyay/app
+        run: |
+          uv sync --all-extras --all-groups
+          uv pip install pytest pytest-django -e "$GITHUB_WORKSPACE/eventyay-superplugin"
+      - name: Verify plugin discovery
+        working-directory: eventyay-superplugin
+        env:
+          EVY_RUNNING_ENVIRONMENT: testing
+        run: ../../eventyay/app/.venv/bin/python -m pytest tests

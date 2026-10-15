@@ -39,6 +39,14 @@ Now, change to the newly created directory::
 
     $ cd eventyay-superplugin
 
+The generated plugin targets unified Eventyay on Python 3.12. Install it into
+an Eventyay environment created from the repository's ``app`` directory;
+installing the legacy ``pretix`` package does not provide that runtime.
+
+The generated tests verify the installed entry point, Django plugin discovery,
+metadata, and signal loading. The template workflow runs them for the default
+module name and a custom module with a display name containing spaces.
+
 Voilà, there's your plugin structure! See eventyay' `documentation`_ for more info.
 
 .. _eventyay: https://github.com/eventyay/eventyay

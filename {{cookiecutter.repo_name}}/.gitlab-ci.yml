@@ -1,34 +1,34 @@
 test:
     image:
-        name: pretix/ci-image
+        name: python:3.12
     before_script:
         - pip install -U pip uv
         - uv pip install --system -U wheel setuptools pytest pytest-django coverage
-        - uv pip install --system -U git+https://github.com/pretix/pretix.git@master#egg=pretix
+        - apt-get update && apt-get install -y gettext libjpeg-dev zlib1g-dev libpq-dev
+        - git clone --depth 1 https://github.com/fossasia/eventyay.git ../eventyay
+        - uv sync --project ../eventyay/app --all-extras --all-groups
     script:
-        - uv pip install --system -e .
-        - make
-        - coverage run -m pytest tests
-        - coverage report
+        - uv pip install --python ../eventyay/app/.venv/bin/python -e . coverage pytest pytest-django
+        - EVY_RUNNING_ENVIRONMENT=testing ../eventyay/app/.venv/bin/coverage run -m pytest tests
+        - ../eventyay/app/.venv/bin/coverage report
 style:
     image:
-        name: pretix/ci-image
+        name: python:3.12
     before_script:
         - pip install -U pip uv
         - uv pip install --system -U wheel setuptools isort black flake8 check-manifest
-        - uv pip install --system -U git+https://github.com/pretix/pretix.git@master#egg=pretix
     script:
-        - uv pip install --system -e .
         - black --check .
         - isort -c --gitignore .
         - flake8 --extend-exclude .cache .
         - check-manifest --ignore .cache .
 pypi:
     image:
-        name: pretix/ci-image
+        name: python:3.12
     before_script:
         - cat $PYPIRC > ~/.pypirc
         - pip install -U pip uv
+        - apt-get update && apt-get install -y gettext
         - uv pip install --system -U wheel setuptools twine build pretix-plugin-build check-manifest
     script:
         - python -m build

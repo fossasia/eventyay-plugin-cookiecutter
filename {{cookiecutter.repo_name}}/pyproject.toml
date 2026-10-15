@@ -1,6 +1,7 @@
 [project]
 name = "{{cookiecutter.repo_name}}"
 dynamic = ["version"]
+requires-python = ">=3.12"
 description = "{{cookiecutter.short_description}}"
 readme = "README.rst"
 license = {file = "LICENSE"}
@@ -16,7 +17,7 @@ dependencies = [
 ]
 
 [project.entry-points."pretix.plugin"]
-{{cookiecutter.module_name}} = "{{cookiecutter.module_name}}:PretixPluginMeta"
+{{cookiecutter.module_name}} = "{{cookiecutter.module_name}}"
 
 [project.entry-points."distutils.commands"]
 build = "pretix_plugin_build.build:CustomBuild"

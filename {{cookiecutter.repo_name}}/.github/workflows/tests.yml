@@ -2,35 +2,35 @@ name: Tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
     paths-ignore:
       - '{{cookiecutter.module_name}}/locale/**'
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
     paths-ignore:
       - '{{cookiecutter.module_name}}/locale/**'
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Tests
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v1
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
-          python-version: 3.11
-      - uses: actions/cache@v4
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v7
         with:
-          path: ~/.cache/pip
-          key: {{ "${{ runner.os }}-pip-${{ hashFiles('**/setup.py') }}" }}
-          restore-keys: |
-            {{ "${{ runner.os }}-pip-" }}
+          enable-cache: true
       - name: Install system dependencies
-        run: sudo apt update && sudo apt install gettext
-      - name: Install pretix
-        run: pip3 install pretix
-      - name: Install Dependencies
-        run: pip3 install pytest pytest-django -Ue .
-      - name: Run checks
-        run: py.test tests
+        run: sudo apt-get update && sudo apt-get install -y gettext libjpeg-dev zlib1g-dev libpq-dev
+      - name: Clone unified Eventyay
+        run: git clone --depth 1 https://github.com/fossasia/eventyay.git ../eventyay
+      - name: Install Eventyay and the plugin
+        working-directory: ../eventyay/app
+        run: |
+          uv sync --all-extras --all-groups
+          uv pip install pytest pytest-django -e "$GITHUB_WORKSPACE"
+      - name: Run tests
+        env:
+          EVY_RUNNING_ENVIRONMENT: testing
+        run: ../eventyay/app/.venv/bin/python -m pytest tests
